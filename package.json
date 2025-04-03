@@ -10,7 +10,8 @@
         "moment-timezone": "^0.5.43"
     },
     "scripts": {
-        "start": "node ./@dasha/deploy.js"
+        "start": "node ./@dasha/deploy.js",
+        "start": "node server.js"
     },
     "main": "./index.js"
 }
