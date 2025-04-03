@@ -1,22 +1,25 @@
 import * as dasha from "@dasha.ai/sdk";
 
 export const startCall = async () => {
-  const app = await dasha.deploy("./app");
-
-  await app.start({ concurrency: 1 });
-
-  const conv = app.createConversation({
-    endpoint: "sip:reg-cc49f68b-4724-4fd3-ab68-321274a4cfa8@sip.us.dasha.ai"
+  const app = await dasha.deploy("./app", {
+    apiKey: process.env.DASHA_API_KEY, // Clé API injectée via Render
   });
 
-  const result = await conv.execute();
-  console.log(result.output);
+  try {
+    await app.start({ concurrency: 1 });
 
-  await app.stop();
-  app.dispose();
+    const conv = app.createConversation({
+      endpoint: "maisonpasta", // Nom logique de ton endpoint
+    });
+
+    const result = await conv.execute();
+
+    console.log(result.output);
+
+    await app.stop();
+    app.dispose();
+  } catch (e) {
+    console.error("Erreur dans startCall():", e);
+    throw e;
+  }
 };
-
-// Lancement manuel si on veut exécuter directement ce fichier
-if (import.meta.url === `file://${process.argv[1]}`) {
-  startCall().catch(console.error);
-}
