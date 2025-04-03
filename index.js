@@ -1,23 +1,26 @@
 import * as dasha from "@dasha.ai/sdk";
 
-// Fonction principale pour démarrer l’appel Dasha
 export const startCall = async () => {
-  console.log("Clé API Dasha détectée ?", process.env.DASHA_API_KEY);
+  const apiKey = process.env.DASHA_API_KEY;
+
+  if (!apiKey) {
+    throw new Error("DASHA_API_KEY est manquant dans les variables d'environnement");
+  }
 
   const app = await dasha.deploy("./app", {
-    apiKey: process.env.DASHA_API_KEY // ✅ Injecté depuis Render
+    apiKey, // Clé transmise manuellement
   });
 
   try {
     await app.start({ concurrency: 1 });
 
     const conv = app.createConversation({
-      endpoint: "maisonpasta" // ✅ Ton endpoint logique
+      endpoint: "maisonpasta"
     });
 
     const result = await conv.execute();
 
-    console.log("Résultat de l'appel vocal :", result.output);
+    console.log(result.output);
 
     await app.stop();
     app.dispose();
