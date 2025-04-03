@@ -1,11 +1,22 @@
-import * as dasha from "@dasha.ai/sdk"; // Import the Dasha SDK
+import * as dasha from "@dasha.ai/sdk";
 
-const main = async () => {
-  const app = await dasha.deploy("./app"); // Déploie l'application Dasha à partir du dossier /app
+export const startCall = async () => {
+  const app = await dasha.deploy("./app");
 
-  await app.publish(); // Rend l'application accessible pour Twilio / SIP
+  await app.start({ concurrency: 1 });
 
-  console.log("✅ Application publiée. En attente d'un appel via Twilio ou webhook...");
+  const conv = app.createConversation({
+    endpoint: "sip:reg-cc49f68b-4724-4fd3-ab68-321274a4cfa8@sip.us.dasha.ai"
+  });
+
+  const result = await conv.execute();
+  console.log(result.output);
+
+  await app.stop();
+  app.dispose();
 };
 
-main().catch((e) => console.error(e));
+// Lancement manuel si on veut exécuter directement ce fichier
+if (import.meta.url === `file://${process.argv[1]}`) {
+  startCall().catch(console.error);
+}
