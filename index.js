@@ -1,4 +1,4 @@
-import * as dasha from "@dasha.ai/cli-sdk"; // Note le bon SDK
+import * as dasha from "@dasha.ai/sdk"; // Note le bon SDK
 import path from "path";
 import { fileURLToPath } from "url";
 
