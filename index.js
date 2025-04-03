@@ -1,9 +1,12 @@
-// index.js
-import { deploy } from "@dasha.ai/sdk";
+import * as dasha from "@dasha.ai/sdk";
 
 export const startCall = async () => {
-  const app = await deploy("./app", {
-    apiKey: process.env.DASHA_API_KEY,
+  const apiKey = process.env.DASHA_API_KEY;
+
+  console.log("Clé API Dasha détectée :", apiKey); // debug
+
+  const app = await dasha.deploy("./app", {
+    apiKey: apiKey,
   });
 
   try {
@@ -14,6 +17,7 @@ export const startCall = async () => {
     });
 
     const result = await conv.execute();
+
     console.log(result.output);
 
     await app.stop();
