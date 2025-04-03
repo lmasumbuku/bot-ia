@@ -1,0 +1,97 @@
+{
+  "default": {
+    "voiceInfo": {
+      "lang": "en-US",
+      "speaker": "mu2/fA2TI1m22NPQVhxhw9DE?optimize_streaming_latency=4",
+      "speed": 1,
+      "options": {
+        "similarity_boost": 0.75,
+        "stability": 0.5,
+        "style": 0.3,
+        "use_speaker_boost": true
+      }
+    },
+    "phrases": {
+      "hello": {
+        "random": [
+          [
+            {
+              "text": "Hello?"
+            }
+          ],
+          [
+            {
+              "text": "Umm, hello?"
+            }
+          ],
+          [
+            {
+              "text": "Are you there?"
+            }
+          ],
+          [
+            {
+              "text": "Can you hear me?"
+            }
+          ]
+        ]
+      },
+      "active_hearing": {
+        "random": [
+          {
+            "text": "Uh-huh..."
+          },
+          {
+            "text": "Mm-hmm..."
+          },
+          {
+            "text": "Oh..."
+          },
+          {
+            "text": "Ah..."
+          }
+        ]
+      },
+      "sorry_go_ahead": {
+        "random": [
+          {
+            "text": "Sorry, go ahead."
+          },
+          {
+            "text": "Sorry, I cut you off, please go ahead."
+          },
+          {
+            "text": "Sorry, continue."
+          },
+          {
+            "text": "Oops, go on."
+          },
+          {
+            "text": "Pardon me, proceed."
+          },
+          {
+            "text": "My bad, keep going."
+          },
+          {
+            "text": "Excuse me, carry on."
+          },
+          {
+            "text": "I interrupted, please go on."
+          },
+          {
+            "text": "Apologies, you were saying?"
+          },
+          {
+            "text": "Sorry, your turn."
+          },
+          {
+            "text": "I'll pause, you continue."
+          },
+          {
+            "text": "Forgive me, go ahead."
+          }
+        ]
+      }
+    }
+  }
+}

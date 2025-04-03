@@ -1,0 +1,17 @@
+{
+  "formatVersion": "2",
+  "dialogue": {
+      "file": "main.dsl"
+  },
+  "nlu": {
+      "language": "fr-FR",
+      "skills": [
+          ]
+  },
+  "nlg": {
+      "type": "phrases",
+      "file": "phrasemap.json"
+  },
+  "name": "pizza-ordering-template",
+  "description": "Pizza Order Taking AI Agent Template"
+}
