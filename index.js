@@ -1,5 +1,5 @@
 // index.js
-import { deploy } from "@dasha.ai/cli-sdk";
+import { deploy } from "@dasha.ai/sdk";
 
 export const startCall = async () => {
   const app = await deploy("./app", {
