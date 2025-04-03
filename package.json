@@ -1,6 +1,6 @@
 {
     "dependencies": {
-        "@dasha.ai/sdk": "^1.0.9",
+        "@dasha.ai/sdk": "^0.10.22",
         "cors": "^2.8.5",
         "express": "^4.17.1",
         "sip.js": "^0.20.0",
