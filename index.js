@@ -4,11 +4,9 @@ export const startCall = async () => {
   const apiKey = process.env.DASHA_API_KEY;
   console.log("Clé API Dasha détectée :", apiKey);
 
-  const app = await dasha.deploy("./app", {
-    apiKey: apiKey,
-    baseUrl: "https://app.us.dasha.ai" // INDISPENSABLE POUR RENDER
-  });
-
+const app = await dasha.deploy("./app", {
+  configPath: ".dashaapp.config.json"
+});
   try {
     await app.start({ concurrency: 1 });
 
