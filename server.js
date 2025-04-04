@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
 app.post("/start-call", async (req, res) => {
   try {
     await startCall();
-    res.status(200).json({ message: "Appel lancé avec succès 📞" });
+    res.json({ message: "Appel lancé avec succès 📞" });
   } catch (err) {
     console.error("Erreur dans /start-call :", err);
     res.status(500).json({ error: "Erreur", details: err.message });
