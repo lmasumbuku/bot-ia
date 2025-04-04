@@ -1,25 +1,21 @@
 import * as dasha from "@dasha.ai/sdk";
 
-// Configuration explicite de Dasha avec API Key et URL
-dasha.configure({
-  apiKey: process.env.DASHA_API_KEY,
-  baseUrl: "https://app.us.dasha.ai/api",
-});
-
 export const startCall = async () => {
-  console.log("Clé API Dasha détectée :", process.env.DASHA_API_KEY);
+  const DASHA_API_KEY = process.env.DASHA_API_KEY;
 
-  const app = await dasha.deploy("./app");
+  console.log("Clé API Dasha détectée :", DASHA_API_KEY);
+
+  const app = await dasha.deploy("./app", {
+    apiKey: DASHA_API_KEY, // ici on passe l'API Key directement
+    baseUrl: "https://app.us.dasha.ai"
+  });
 
   try {
     await app.start({ concurrency: 1 });
 
-    const conv = app.createConversation({
-      endpoint: "maisonpasta"
-    });
+    const conv = app.createConversation({ endpoint: "maisonpasta" });
 
     const result = await conv.execute();
-
     console.log(result.output);
 
     await app.stop();
